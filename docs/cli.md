@@ -134,3 +134,4 @@ report:
 
 
 [cli-template-link]: https://github.com/grab/App-Sizer/blob/master/cli-config-template.yml
+[latest_release_link]: https://github.com/grab/App-Sizer/releases

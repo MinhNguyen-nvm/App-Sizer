@@ -201,7 +201,7 @@ appSizer {
 ## Task Graph
 
 <p align="center">
-<img src="./images/task-graph.png" width="80%">
+<img src="../images/task-graph.png" width="80%">
 </p>
 
 ## Troubleshooting

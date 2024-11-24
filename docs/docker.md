@@ -22,7 +22,7 @@ The main purpose of this image is to be used to demo data from [App Sizer][app-s
 The Docker image includes a pre-configured dashboard in Grafana:
 
 <p align="center">
-<img src="./images/dashboard.gif" width="95%">
+<img src="../images/dashboard.gif" width="95%">
 </p>
 
 To use the dashboard, you either to:

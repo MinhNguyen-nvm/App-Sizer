@@ -144,10 +144,10 @@ SOFTWARE
 
 ```
 [app-sizer-website]: https://grab.github.io/App-Sizer/
-[report_doc]: ./docs/report.md
-[plugin_doc]: ./docs/plugin.md
-[cli_doc]: ./docs/cli.md
-[limitation_doc]:./docs/limitation.md
+[report_doc]: https://engineering.grab.com/App-Sizer/report/
+[plugin_doc]: https://engineering.grab.com/App-Sizer/plugin/
+[cli_doc]: https://engineering.grab.com/App-Sizer/cli/
+[limitation_doc]:https://engineering.grab.com/App-Sizer/limitation/
 [gradle-plugin]: ./gradle-plugin
 [commandline-tool]: ./clt
 [grafana-docker]: ./docker
