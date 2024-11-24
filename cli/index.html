@@ -656,12 +656,10 @@
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Generate the command line binary file:
-   <div class="highlight"><pre><span></span><code>./gradlew clt:shadowJar
-</code></pre></div></p>
+<p>Download our [Latest Release][latest_release_link] from GitHub (support Java 11+)</p>
 </li>
 <li>
-<p>Create your config file following <a href="../cli-config-template.yml">this template</a>.</p>
+<p>Create your config file following <a href="https://github.com/grab/App-Sizer/blob/master/cli-config-template.yml">this template</a>.</p>
 </li>
 <li>
 <p>Run the analysis using the command line tool:
@@ -669,8 +667,11 @@
 </code></pre></div></p>
 </li>
 </ol>
+<p><em>Note, by any reason the download Jar does not work. You could check out the repo and generate the command line binary file</em>
+   <div class="highlight"><pre><span></span><code>./gradlew clt:shadowJar
+</code></pre></div></p>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
-<p>The App Sizer CLI accepts a YAML file as configuration (<a href="../cli-config-template.yml">template</a>). The file consists of three main blocks:</p>
+<p>The App Sizer CLI accepts a YAML file as configuration (<a href="https://github.com/grab/App-Sizer/blob/master/cli-config-template.yml">template</a>). The file consists of three main blocks:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">project-input</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># Configure the input for the project</span>
 <span class="nt">apk-generation</span><span class="p">:</span>

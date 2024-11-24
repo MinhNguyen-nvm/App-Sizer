@@ -705,7 +705,6 @@
 <li>JSON data</li>
 </ol>
 <h2 id="influxdb-database">InfluxDB Database<a class="headerlink" href="#influxdb-database" title="Permanent link">&para;</a></h2>
-<p>InfluxDB (1.x) is recommended for CI tracking and creating customized dashboards. It's ideal for integrating the tool into your CI pipeline to track historical reports between releases.</p>
 <h3 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h3>
 <p>We provide a Docker image with InfluxDB (1.x) and Grafana pre-configured:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span><span class="se">\</span>
@@ -719,7 +718,7 @@
 </code></pre></div>
 <p>For more details on the Docker setup, see our <a href="../docker">Docker guide</a>.</p>
 <h3 id="dashboard">Dashboard<a class="headerlink" href="#dashboard" title="Permanent link">&para;</a></h3>
-<p>A default <strong>App Download Size Breakdown</strong> dashboard is included in the Grafana docker instance. If you have an existing InfluxDB and Grafana setup, you can import our dashboard using this <a href="../grafana/dashboard-to-import.json">JSON file</a>.</p>
+<p>A default <strong>App Download Size Breakdown</strong> dashboard is included in the Grafana docker instance. If you have an existing InfluxDB and Grafana setup, you can import our dashboard using this <a href="https://github.com/grab/App-Sizer/blob/master/grafana/dashboard-to-import.json">JSON file</a>.</p>
 <h2 id="markdown-tables">Markdown Tables<a class="headerlink" href="#markdown-tables" title="Permanent link">&para;</a></h2>
 <p>Markdown tables provide a convenient format for local analysis. The report is saved as <code>[option]-report.md</code> in the configured output folder (default: <code>app/build/sizer/reports</code>).</p>
 <h3 id="example-module-wise-size-contribution">Example: Module-wise Size Contribution<a class="headerlink" href="#example-module-wise-size-contribution" title="Permanent link">&para;</a></h3>
