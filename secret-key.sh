@@ -1,0 +1,1 @@
+export GPG_PRIVATE_KEY="-----BEGIN PGP PRIVATE KEY BLOCK-----"

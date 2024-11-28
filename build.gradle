@@ -30,6 +30,10 @@ buildscript {
         google()
         mavenCentral()
     }
+
+    dependencies {
+        classpath 'io.github.gradle-nexus:publish-plugin:1.1.0'
+    }
 }
 
 
@@ -38,5 +42,31 @@ plugins {
     alias(libs.plugins.kotlin.kapt) apply false
     alias(libs.plugins.johnrengelman.shadow) apply false
     alias(libs.plugins.gradle.plugin.publish) apply false
+    alias(libs.plugins.dokka.gradle.plugin) apply false
 }
 
+
+apply plugin: 'io.github.gradle-nexus.publish-plugin'
+
+nexusPublishing {
+    repositories {
+        sonatype {
+            username = project.findProperty("ossrhUsername") ?: System.getenv("OSSRH_USERNAME")
+            password = project.findProperty("ossrhPassword") ?: System.getenv("OSSRH_PASSWORD")
+            stagingProfileId = project.findProperty("ossrhProfileId") ?: System.getenv("OSSRH_ID")
+
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+        }
+    }
+    packageGroup = "com.grab.sizer"
+
+    // Add this for debugging
+    repositories.sonatype {
+        beforePublishing {
+            println "Publishing with username: ${username}"
+            println "Profile ID: ${stagingProfileId}"
+            println "Package group: ${packageGroup}"
+        }
+    }
+}

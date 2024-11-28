@@ -13,9 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 apply plugin: "maven-publish"
 apply plugin: "signing"
 apply plugin: "org.jetbrains.dokka"
+
 
 task sourcesJar(type: Jar) {
     group = "publishing"
@@ -39,14 +41,16 @@ afterEvaluate {
     publishing {
         publications {
             // Gradle plugin marker if it exists
-            named("grazelPluginPluginMarkerMaven") { publication ->
-                configurePom(publication)
+            if (plugins.hasPlugin('java-gradle-plugin')) {
+                named("appSizerPluginPluginMarkerMaven") { publication ->
+                    configurePom(publication)
+                }
             }
 
             release(MavenPublication) { publication ->
-                groupId project.findProperty("groupId")
-                artifactId project.name
-                version project.findProperty("versionName")
+                groupId project.group
+                artifactId project.findProperty("artifactId")
+                version project.version
 
                 from components.java
 
@@ -62,12 +66,13 @@ afterEvaluate {
 private void configurePom(MavenPublication publication) {
     publication.pom {
         name = project.name
-        description = project.description
-        url = website
+        description = 'A tool designed to analyze the download size of Android applications'
+        url = 'https://github.com/grab/app-sizer'
         licenses {
             license {
-                name = "The MIT License"
-                url = "https://github.com/grab/App-Sizer/blob/master/LICENSE"
+                name = 'MIT License'
+                url = 'https://opensource.org/licenses/MIT'
+                distribution = 'repo'
             }
         }
         developers {
@@ -88,20 +93,30 @@ private void configurePom(MavenPublication publication) {
             }
         }
         scm {
-            connection = "git@github.com:grab/App-Sizer.git"
-            developerConnection = "git@github.com:grab/App-Sizer.git"
-            url = website
+            connection = "git@github.com:grab/app-size.git"
+            developerConnection = "git@github.com:grab/app-size.git"
+            url = 'https://github.com/grab/app-sizer'
         }
     }
 }
 
 afterEvaluate {
     signing {
+        def signingKey = project.findProperty('signingKey') ?: System.getenv('GPG_PRIVATE_KEY')
+        def signingPassword = project.findProperty('signingPassword') ?: System.getenv('GPG_PASSPHRASE')
+        def signingKeyId = project.findProperty('signingKeyId') ?: System.getenv('GPG_KEY_ID')
+
         useInMemoryPgpKeys(
-            rootProject.ext["signing.keyId"].toString(),
-            rootProject.ext["signing.key"].toString(),
-            rootProject.ext["signing.password"].toString(),
+                signingKeyId,
+                signingKey,
+                signingPassword
         )
         sign publishing.publications
     }
+
+
+    tasks.withType(Sign).configureEach { signTask ->
+        signTask.onlyIf { !project.version.endsWith('SNAPSHOT') }
+    }
+
 }

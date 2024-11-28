@@ -29,10 +29,9 @@ plugins {
     id 'com.grab.sizer.kotlin'
 }
 
+apply from: rootProject.file('gradle/publishing.gradle')
+
 dependencies {
-    /**
-     * These two libs are already in the AGP
-     */
     compileOnly libs.android.tools.bundletool
     compileOnly libs.android.tools.common
 
@@ -50,4 +49,4 @@ dependencies {
     testImplementation libs.android.tools.common
 }
 
-ext.artifactId = "app-sizer"
+ext.set("artifactId", "app-sizer")

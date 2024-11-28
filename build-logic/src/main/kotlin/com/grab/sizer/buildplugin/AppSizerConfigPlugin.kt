@@ -41,7 +41,8 @@ class AppSizerConfigPlugin : Plugin<Project> {
     override fun apply(project: Project) {
         project.plugins.apply("org.jetbrains.kotlin.jvm")
         project.plugins.apply("org.jetbrains.kotlin.kapt")
-        project.version = if (System.getenv("CI") != null) "SNAPSHOT-08" else "SNAPSHOT"
+        project.version = "1.0.0-SNAPSHOT"
+        project.group = "com.grab.sizer"
 
         project.tasks.withType(KotlinCompile::class.java).forEach {
             it.kotlinOptions.jvmTarget = "11"
